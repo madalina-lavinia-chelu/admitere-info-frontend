@@ -34,7 +34,7 @@ export function FeaturesSection() {
             </div>
             <h3 className="text-xl font-semibold mb-2">Analiză detaliată</h3>
             <p className="text-sm md:text-base text-muted-foreground flex-1">
-              Vizualizează statistici personalizate care te ajută să identifici
+              xxxxxx Vizualizează statistici personalizate care te ajută să identifici
               punctele forte și zonele care necesită îmbunătățire.
             </p>
           </div>
