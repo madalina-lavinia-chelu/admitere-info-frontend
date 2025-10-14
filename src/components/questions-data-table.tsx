@@ -50,6 +50,7 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  Eye,
   Pencil,
   Trash2,
 } from "lucide-react";
@@ -105,11 +106,13 @@ export type PaginationMeta = z.infer<typeof paginationMetaSchema>;
 interface QuestionsDataTableProps {
   onEdit?: (question: Question) => void;
   onDelete?: (questionId: number) => void;
+  onPreview?: (question: Question) => void;
 }
 
 export function QuestionsDataTable({
   onEdit,
   onDelete,
+  onPreview,
 }: QuestionsDataTableProps) {
   // State for table filters, sorting, and pagination
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -441,6 +444,13 @@ export function QuestionsDataTable({
               <Button
                 variant="ghost"
                 size="icon"
+                onClick={() => onPreview?.(row.original)}
+                aria-label="Preview">
+                <Eye className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={() => onEdit?.(row.original)}
                 aria-label="Edit">
                 <Pencil className="h-4 w-4" />
@@ -472,7 +482,7 @@ export function QuestionsDataTable({
         },
       },
     ],
-    [onEdit, onDelete, mutate, windowWidth]
+    [onEdit, onDelete, onPreview, mutate, windowWidth]
   );
 
   // Initialize table
@@ -604,7 +614,7 @@ export function QuestionsDataTable({
             </svg>
           </Button>
           <Button asChild>
-            <Link href={paths.dashboard.question.new}>
+            <Link href={paths.dashboard.question.new} target="_blank">
               <IconCirclePlusFilled className="mr-2 h-4 w-4" />
               Adaugă grilă
             </Link>

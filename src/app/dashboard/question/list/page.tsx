@@ -8,13 +8,14 @@ import {
 } from "@/components/questions-data-table";
 import { paths } from "@/routes/paths";
 import { PERMISSIONS } from "@/utils/permissions.utils";
-import { useRouter } from "next/navigation";
 
 export default function QuestionsListPage() {
-  const router = useRouter();
-
   const handleEditQuestion = (question: Question) => {
-    router.push(paths.dashboard.question.edit(question.id));
+    window.open(paths.dashboard.question.edit(question.id), "_blank");
+  };
+
+  const handlePreviewQuestion = (question: Question) => {
+    window.open(paths.dashboard.question.preview(question.id), "_blank");
   };
 
   return (
@@ -22,7 +23,10 @@ export default function QuestionsListPage() {
       <DashboardPageWrapper
         title="Întrebări"
         subtitle="Gestionați întrebările existente sau adăugați unele noi.">
-        <QuestionsDataTable onEdit={handleEditQuestion} />
+        <QuestionsDataTable
+          onEdit={handleEditQuestion}
+          onPreview={handlePreviewQuestion}
+        />
       </DashboardPageWrapper>
     </RoleBasedGuard>
   );
