@@ -47,12 +47,12 @@ interface MockQuestionState {
 const MOCK_QUESTION: MockQuestion = {
   id: 1,
   question_text: `
-    <p><strong>Care dintre următoarele afirmații despre vectori (array-uri) în programare sunt corecte?</strong></p>
-    <p>Selectează toate răspunsurile corecte:</p>
+    <strong>Care dintre următoarele afirmații despre vectori (array-uri) în programare sunt corecte?</strong>
+    Selectează toate răspunsurile corecte:
   `,
   hint: `
-    <p><strong>Indiciu:</strong> Vectorii sunt structuri de date care stochează elemente de același tip într-o succesiune ordonată. 
-    Gândește-te la proprietățile și operațiile fundamentale cu vectori.</p>
+    <strong>Indiciu:</strong> Vectorii sunt structuri de date care stochează elemente de același tip într-o succesiune ordonată. 
+    Gândește-te la proprietățile și operațiile fundamentale cu vectori.
   `,
   type: "multiple",
   answers: [
@@ -150,10 +150,10 @@ export function MockQuestionFlow() {
         .map((answer) => answer.id);
 
       const selectedCorrect = state.selectedAnswers.filter((id) =>
-        correctAnswers.includes(id)
+        correctAnswers.includes(id),
       );
       const selectedIncorrect = state.selectedAnswers.filter(
-        (id) => !correctAnswers.includes(id)
+        (id) => !correctAnswers.includes(id),
       );
 
       const isCorrect =
@@ -165,8 +165,8 @@ export function MockQuestionFlow() {
           is_correct: isCorrect,
           correct_answers: correctAnswers,
           explanation: isCorrect
-            ? `<p><strong>Excelent!</strong> Ai răspuns corect. Vectorii sunt într-adevăr structuri de date ordonate care stochează elemente de același tip, iar indexarea începe de la 0 în majoritatea limbajelor.</p>`
-            : `<p><strong>Nu quite!</strong> Vectorii pot stoca orice tip de date (nu doar numere întregi), iar în limbaje dinamice lungimea poate fi modificată. Vectorii stochează elemente de același tip într-o succesiune ordonată, cu indexare de la 0.</p>`,
+            ? `<strong>Excelent!</strong> Ai răspuns corect. Vectorii sunt într-adevăr structuri de date ordonate care stochează elemente de același tip, iar indexarea începe de la 0 în majoritatea limbajelor.`
+            : `<strong>Nu chiar!</strong> Vectorii pot stoca orice tip de date (nu doar numere întregi), iar în limbaje dinamice lungimea poate fi modificată. Vectorii stochează elemente de același tip într-o succesiune ordonată, cu indexare de la 0.`,
         },
         submitting: false,
       }));

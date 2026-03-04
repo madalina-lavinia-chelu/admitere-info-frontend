@@ -11,7 +11,7 @@ const geistSans = Rethink_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Grile Admitere",
+  title: "Admitere info",
   description: "Rezolvă grilele de admitere gratuit",
 };
 
